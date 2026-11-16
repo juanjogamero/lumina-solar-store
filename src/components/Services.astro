@@ -125,7 +125,7 @@ const services = [
       let mouseX = 0;
       let mouseY = 0;
       let isHovering = false;
-      let animationFrameId;
+      let animationFrameId: number | null = null;
       
       const updateCursor = () => {
         if (isHovering) {
@@ -140,8 +140,9 @@ const services = [
       
       cards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
+          const pointer = e as MouseEvent;
+          mouseX = pointer.clientX;
+          mouseY = pointer.clientY;
           // Si el cursor no estaba visible, lo forzamos (para la primera entrada rápida)
           if (!isHovering) {
             isHovering = true;
