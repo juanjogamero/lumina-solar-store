@@ -1,66 +1,54 @@
 <div align="center">
 
-# UnEspacio — Storefront
+# UnEspacio Solar
 
-**Una tienda de hogar diseñada para facilitar decisiones de compra con información clara.**
+**Concepto de tienda online de producto único orientada a la conversión, con una experiencia de compra transparente.**
 
 ![Astro](https://img.shields.io/badge/Astro-4-BC52EE?style=flat-square&logo=astro&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![Responsive](https://img.shields.io/badge/Responsive-yes-344D3C?style=flat-square)
-![Shop](https://img.shields.io/badge/Checkout-Pendiente-95704E?style=flat-square)
+![Responsive](https://img.shields.io/badge/Responsive-Ready-225842?style=flat-square)
+![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-Static-161B22?style=flat-square&logo=github)
 
-[**Ver la demo**](https://juanjogamero.github.io/unespacio-site/) · [**Editar datos de producto**](src/data/store.ts) · [**Estado del despliegue**](https://github.com/juanjogamero/unespacio-site/actions/workflows/pages.yml)
+[**Visitar la demo**](https://juanjogamero.github.io/unespacio-site/) · [**Ver despliegues**](https://github.com/juanjogamero/unespacio-site/actions/workflows/pages.yml)
 
 </div>
 
 ---
 
-## Descripción
+## Qué es
 
-UnEspacio es un frontend de comercio electrónico de hogar, construido sobre la estructura Astro existente, con una portada orientada a presentar un producto protagonista de iluminación solar exterior.
+UnEspacio se ha reorientado desde un portal editorial de hogar y jardín hacia una **landing comercial centrada en un único producto**. La primera versión utiliza como **producto de referencia** un aplique solar de exterior con sensor de movimiento.
 
-Su objetivo es explicar con claridad una necesidad, enseñar sus posibles beneficios, resolver objeciones y facilitar una futura compra cuando estén habilitados el catálogo y la pasarela de pago.
+La web combina fotografía ambiental, narrativa de beneficios, ficha de producto, packs, FAQ y un carrito interactivo. Está preparada para mostrar el recorrido de compra, pero **no vende ni cobra**.
 
-**Estado comercial: pre-lanzamiento.** La demo web no procesa pagos ni recibe pedidos.
+> [!IMPORTANT]
+> **Demo, no tienda operativa.** Los precios y packs son ejemplos. Las fotos disponibles muestran ambientes residenciales, **no el producto real**. No existe proveedor aprobado, inventario, checkout, plazo de entrega garantizado ni reseñas de compradores verificadas. Antes de lanzar, hay que sustituir estas partes y validar la ficha técnica y el cumplimiento legal.
 
-## Diseño enfocado a conversión
+## Experiencia de compra
 
-- Portada con propuesta de valor y botones que llevan al producto.
-- Bloque de beneficios centrado en el uso cotidiano.
-- Galería de imágenes de ambientación, diferenciadas de fotografías reales del producto.
-- Ficha de producto centralizada con precio, disponibilidad y checkout configurables.
-- FAQ de objeciones: carga solar, montaje, resistencia, entrega y devoluciones.
-- Sección de reseñas que únicamente publica valoraciones reales verificadas.
-- Navegación responsive, metadatos SEO y accesibilidad básica.
-
-### Lo que todavía **NO** está activo
-
-No se ha conectado proveedor de dropshipping, stock, pago, envío, impuestos, emails transaccionales ni gestión de pedidos. Tampoco hay testimonios de clientes ni especificaciones técnicas confirmadas. No se han inventado ninguno de esos datos.
-
-## Configuración comercial
-
-Archivo principal: [`src/data/store.ts`](src/data/store.ts).
-
-Ahí se configuran:
-
-| Campo | Qué introducir |
+| Área | Implementación |
 | --- | --- |
-| `featuredProduct.name` | Nombre de producto confirmado por proveedor |
-| `featuredProduct.image/gallery` | Fotografías del producto con permiso de uso |
-| `featuredProduct.priceEur` | Precio final verdadero, incluidos impuestos cuando corresponda |
-| `featuredProduct.checkoutUrl` | Enlace real HTTPS a un checkout externo autorizado |
-| `featuredProduct.stockConfirmed` | `true` únicamente si se puede atender un pedido |
-| `featuredProduct.available` | `true` cuando el producto esté listo para venta |
-| `store.checkoutConfigured` | `true` cuando el checkout y cumplimiento legal estén verificados |
-| `verifiedReviews` | Solo testimonios auténticos con fuente verificable |
+| Hero | Propuesta de valor enfocada en hogar y exterior |
+| Producto | Galería interactiva, descripción, precio de demo y selección de packs |
+| Carrito | Añadir packs, cambiar cantidad y consultar subtotal, con persistencia local |
+| Beneficios | Posibilidades del producto explicadas con sus límites |
+| Confianza | Comunicación explícita de lo confirmado y lo pendiente |
+| Comparación | Lista de criterios relevantes para tomar una decisión |
+| Reseñas | Sección preparada; sin puntuaciones ni opiniones inventadas |
+| FAQ | Respuestas sobre uso, instalación, autonomía, envíos y devoluciones |
+| Móvil | Diseño responsive y acceso rápido a producto |
+| Pagos | Desactivados expresamente |
 
-El CTA de compra permanece deshabilitado hasta que todos los requisitos estén configurados. **No basta con publicar la web para abrir una tienda real.**
+El carrito de demostración usa `localStorage`, no almacena datos de pago ni crea pedidos reales.
 
-Para lanzar comercialmente en España deben revisarse, entre otros, identidad legal del comerciante, precio completo, impuestos, información precontractual, envío y devolución/desistimiento, privacidad, cookies, soporte y condiciones del proveedor. Esta configuración debe validarse para el negocio concreto.
+## Arquitectura
 
-## Desarrollo
+- **Astro 4** para la generación estática.
+- HTML y CSS para una página de producto ligera y responsive.
+- JavaScript del navegador para galería, selección de packs, cantidad, carrito y FAQ.
+- Configuración condicional de `base` en `astro.config.mjs` para publicar en GitHub Pages sin alterar la configuración del dominio previsto.
+- `.github/workflows/pages.yml` para compilar y publicar `dist/` automáticamente.
 
-Requiere Node.js 20+ y npm.
+## Ejecutar en local
 
 ```bash
 git clone https://github.com/juanjogamero/unespacio-site.git
@@ -69,41 +57,44 @@ npm ci
 npm run dev
 ```
 
-En local: `http://localhost:4321`.
+La portada se encuentra en `src/pages/index.astro`.
 
-```bash
-npm run build
-npm run preview
-```
+## Publicar en GitHub Pages
 
-## Publicación
+1. Abre [Settings → Pages](https://github.com/juanjogamero/unespacio-site/settings/pages).
+2. Selecciona **GitHub Actions** como fuente.
+3. Revisa o ejecuta [Build and deploy UnEspacio storefront](https://github.com/juanjogamero/unespacio-site/actions/workflows/pages.yml) con la rama `main`.
+4. La URL prevista es **https://juanjogamero.github.io/unespacio-site/**.
 
-Workflow: `.github/workflows/pages.yml`.
+No se debe anunciar la demo como publicada hasta que la ejecución de **build** y **deploy** sea correcta.
 
-1. Entra en [Settings → Pages](https://github.com/juanjogamero/unespacio-site/settings/pages) y configura **Source: GitHub Actions**.
-2. Abre [Build and deploy UnEspacio storefront](https://github.com/juanjogamero/unespacio-site/actions/workflows/pages.yml).
-3. Ejecuta **Run workflow** en `main`, o sube cambios a la rama.
-4. Verifica el resultado antes de considerar publicada la web.
+## Lista de requisitos antes de vender
 
-URL prevista: https://juanjogamero.github.io/unespacio-site/
+- [ ] Elegir un producto concreto y recibir una muestra física.
+- [ ] Verificar certificaciones, conformidad, instrucciones, marcado y seguridad aplicables.
+- [ ] Fotografiar y grabar la unidad real, y obtener derechos sobre todo material promocional.
+- [ ] Registrar el proveedor, su origen, stock real, condiciones de devolución y coste total puesto en destino.
+- [ ] Confirmar especificaciones y beneficios: batería, lúmenes, materiales, índice IP, sensor, autonomía y dimensiones.
+- [ ] Determinar precios reales, impuestos, margen y costes de publicidad, envío, comisiones y devoluciones.
+- [ ] Integrar un checkout real con un proveedor de pago y gestión segura de pedidos.
+- [ ] Implementar inventario, emails transaccionales, seguimiento de pedido y atención posventa.
+- [ ] Publicar identidad del vendedor, aviso legal, privacidad, cookies cuando proceda, métodos de pago, entregas, devoluciones y desistimiento.
+- [ ] Recopilar opiniones genuinas y explicar cómo se comprueba su autenticidad.
+- [ ] Configurar analítica con consentimiento cuando sea necesario y probar embudo de compra en móvil.
+- [ ] Hacer pedidos de prueba de extremo a extremo antes de recibir tráfico de pago.
 
-El proyecto mantiene el sitio `https://unespacio.es` como referencia de compilación fuera de GitHub Actions. La publicación en el dominio personalizado exige configurar aparte DNS y hosting.
+En una tienda real con dropshipping, **el vendedor sigue teniendo obligaciones frente al consumidor** aunque el producto sea enviado por un tercero.
 
-## Arquitectura
+## Decisiones de conversión
 
-```text
-src/
-├── data/store.ts          # Datos comerciales y reseñas verificadas
-├── layouts/ShopLayout.astro
-├── pages/index.astro      # Nueva tienda
-├── styles/shop.css        # Sistema visual responsive
-├── components/            # Componentes anteriores, aún disponibles
-└── pages/                 # Rutas editoriales antiguas, aún presentes
-.github/workflows/pages.yml
-```
+La landing prioriza información relevante cerca del CTA (producto, precio, packs y condiciones), amplía la explicación con beneficios y FAQ, evita reseñas inventadas y muestra el carrito de forma inmediata. Estas decisiones se inspiran en investigaciones de UX sobre fichas de producto, claridad de envíos y devoluciones, pero **no garantizan ventas**.
 
-Las páginas de la versión editorial anterior permanecen en el repositorio, pero no forman parte de la navegación comercial nueva. Conviene revisar su contenido y textos legales antes de publicar el proyecto en un dominio real.
+Fuentes de referencia:
+- [Baymard Institute: investigación sobre páginas de producto](https://baymard.com/research/product-page)
+- [Baymard Institute: prácticas UX 2026](https://baymard.com/research-articles/current-state-ecommerce-product-page-ux)
+- [Your Europe: derecho de desistimiento](https://europa.eu/youreurope/citizens/consumers/shopping/returns/index_en.htm)
+- [Centro Europeo del Consumidor: riesgos del dropshipping](https://portal-cec.consumo.gob.es/es/comunicacion/noticias/2024/la-red-ecc-net-reclama-una-mayor-regulacion-para-proteger-los)
 
 ---
 
-Proyecto web de UnEspacio · Desarrollo con Astro.
+**Estado:** demostración comercial estática · **No se aceptan pagos ni pedidos.**
