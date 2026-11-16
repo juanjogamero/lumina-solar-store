@@ -1,6 +1,6 @@
 <div align="center">
 
-# UnEspacio Solar
+# Lumina Solar
 
 **Concepto de tienda online de producto único orientada a la conversión, con una experiencia de compra transparente.**
 
@@ -8,7 +8,7 @@
 ![Responsive](https://img.shields.io/badge/Responsive-Ready-225842?style=flat-square)
 ![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-Static-161B22?style=flat-square&logo=github)
 
-[**Visitar la demo**](https://juanjogamero.github.io/unespacio-site/) · [**Ver despliegues**](https://github.com/juanjogamero/unespacio-site/actions/workflows/pages.yml)
+[**Visitar la demo**](https://juanjogamero.github.io/lumina-solar-store/) · [**Ver despliegues**](https://github.com/juanjogamero/lumina-solar-store/actions/workflows/pages.yml)
 
 </div>
 
@@ -16,7 +16,7 @@
 
 ## Qué es
 
-UnEspacio se ha reorientado desde un portal editorial de hogar y jardín hacia una **landing comercial centrada en un único producto**. La primera versión utiliza como **producto de referencia** un aplique solar de exterior con sensor de movimiento.
+El proyecto se ha reorientado desde un portal editorial de hogar y jardín hacia una **landing comercial centrada en un único producto**. La primera versión utiliza como **producto de referencia** un aplique solar de exterior con sensor de movimiento.
 
 La web combina fotografía ambiental, narrativa de beneficios, ficha de producto, packs, FAQ y un carrito interactivo. Está preparada para mostrar el recorrido de compra, pero **no vende ni cobra**.
 
@@ -51,8 +51,8 @@ El carrito de demostración usa `localStorage`, no almacena datos de pago ni cre
 ## Ejecutar en local
 
 ```bash
-git clone https://github.com/juanjogamero/unespacio-site.git
-cd unespacio-site
+git clone https://github.com/juanjogamero/lumina-solar-store.git
+cd lumina-solar-store
 npm ci
 npm run dev
 ```
@@ -61,10 +61,10 @@ La portada se encuentra en `src/pages/index.astro`.
 
 ## Publicar en GitHub Pages
 
-1. Abre [Settings → Pages](https://github.com/juanjogamero/unespacio-site/settings/pages).
+1. Abre [Settings → Pages](https://github.com/juanjogamero/lumina-solar-store/settings/pages).
 2. Selecciona **GitHub Actions** como fuente.
-3. Revisa o ejecuta [Build and deploy UnEspacio storefront](https://github.com/juanjogamero/unespacio-site/actions/workflows/pages.yml) con la rama `main`.
-4. La URL prevista es **https://juanjogamero.github.io/unespacio-site/**.
+3. Revisa o ejecuta [Build and deploy UnEspacio storefront](https://github.com/juanjogamero/lumina-solar-store/actions/workflows/pages.yml) con la rama `main`.
+4. La URL prevista es **https://juanjogamero.github.io/lumina-solar-store/**.
 
 No se debe anunciar la demo como publicada hasta que la ejecución de **build** y **deploy** sea correcta.
 
